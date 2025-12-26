@@ -1,0 +1,1034 @@
+%% 
+%% Copyright 2019-2021 Elsevier Ltd
+%% 
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'CAS Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for cas-dc documentclass for 
+%% double column output.
+
+\documentclass[a4paper,fleqn]{cas-dc}
+
+% If the frontmatter runs over more than one page
+% use the longmktitle option.
+\usepackage[labelfont=bf, labelsep=colon]{caption}
+\captionsetup[figure]{name=Fig.}
+%\documentclass[a4paper,fleqn,longmktitle]{cas-dc}
+\usepackage{amsmath}
+\setlength{\mathindent}{0pt}
+\usepackage[utf8]{inputenc}
+
+%\documentclass[a4paper,fleqn,longmktitle]{cas-dc}
+\usepackage{algorithm}
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{xcolor}
+\setlength{\marginparwidth}{2.8cm}
+\usepackage{algpseudocode}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=green,urlcolor=blue]{hyperref}
+\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+%\usepackage[authoryear,longnamesfirst]{natbib}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+%%%
+
+% Uncomment and use as if needed
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newdefinition{rmk}{Remark}
+%\newproof{pf}{Proof}
+%\newproof{pot}{Proof of Theorem \ref{thm}}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\let\printorcid\relax % 可去掉页面下方的ORCID(s)
+
+% Short title
+% \shorttitle{<short title of the paper for running head>} 
+\shorttitle{Bridging Graph Transformers and Invariant Learning for Graph OOD Generalization}    
+
+% Short author
+% \shortauthors{<short author list for running head>}
+\shortauthors{Tengfeng Sun et al.}
+
+% Main title of the paper
+\title[mode = title]{Bridging Graph Transformers and Invariant Learning for Graph OOD Generalization}  
+
+% Title footnote mark
+% eg: \tnotemark[1]
+% \tnotemark[<tnote number>] 
+%\tnotemark[1,2]
+
+% Title footnote 1.
+% eg: \tnotetext[1]{Title footnote text}
+% \tnotetext[<tnote number>]{<tnote text>} 
+%\tnotetext[1]{This document is the results of the research project funded by the National Science Foundation.}
+%\tnotetext[2]{The second title footnote which is a longer text matter to fill through the whole text width and overflow into another line in the footnotes area of the first page.}
+
+% First author
+%
+% Options: Use if required
+% eg: \author[1,3]{Author Name}[type=editor,
+%       style=chinese,
+%       auid=000,
+%       bioid=1,
+%       prefix=Sir,
+%       orcid=0000-0000-0000-0000,
+%       facebook=<facebook id>,
+%       twitter=<twitter id>,
+%       linkedin=<linkedin id>,
+%       gplus=<gplus id>]
+
+% \author[<aff no>]{<author name>}[<options>]
+
+% Corresponding author indication
+% \cormark[<corr mark no>]
+
+% Footnote of the first author
+% \fnmark[<footnote mark no>]
+
+% Email id of the first author
+% \ead{<email address>}
+
+% URL of the first author
+% \ead[url]{<URL>}
+
+% Credit authorship
+% eg: \credit{Conceptualization of this study, Methodology, Software}
+% \credit{<Credit authorship details>}
+
+% Address/affiliation
+% \affiliation[<aff no>]{organization={},
+%             addressline={}, 
+%             city={},
+% %          citysep={}, % Uncomment if no comma needed between city and postcode
+%             postcode={}, 
+%             state={},
+%             country={}}
+
+% \author[<aff no>]{<author name>}[<options>]
+
+% Footnote of the second author
+% \fnmark[2]
+
+% Email id of the second author
+% \ead{}
+
+% URL of the second author
+% \ead[url]{}
+
+% Credit authorship
+% \credit{}
+
+% Address/affiliation
+% \affiliation[<aff no>]{organization={},
+%             addressline={}, 
+%             city={},
+% %          citysep={}, % Uncomment if no comma needed between city and postcode
+%             postcode={}, 
+%             state={},
+%             country={}}
+
+% Corresponding author text
+% \cortext[1]{Corresponding author}
+
+% Footnote text
+% \fntext[1]{}
+
+% For a title note without a number/mark
+%\nonumnote{}
+
+\author[1]{Tengfeng Sun}[type=editor,
+    auid=000, bioid=1,
+    prefix=
+    role=
+    ]
+
+\ead{24085404007@stu.hfuu.edu.cn}
+%\credit{Conceptualization, Methodology, Software}
+
+\author[1]{Shengwei Ji}[style=chinese]
+
+\ead{}
+%\credit{Investigation, Data curation}
+
+\author[1]{Xinlu Li}
+\cormark[1]
+
+\ead{xinlu.li@hfuu.edu.cn}
+%\credit{Corresponding author, Project administration}
+
+% affiliations （如果需要调整 affiliation 的序号或具体内容，请相应修改）
+
+\address[1]{School of Artificial Intelligence and Big Data, Hefei University, No. 99 Jinxiu Avenue, Economic and Technological Development District, 230601, HeFei, China}
+
+% 对应作者脚注文本（索引 [1] 对应上面 \cormark[1]）
+\cortext[1]{Corresponding author :xinlu.li@hfuu.edu.cn (X.Li)}
+%\cortext[2]{Principal corresponding author}  
+
+% Here goes the abstract
+
+\begin{abstract}
+Graph learning models often experience severe performance degradation when deployed in Out-Of-Distribution (OOD) environments due to distributional shifts between training and testing data. 
+Existing Graph Invariant Learning (GIL) approaches can mitigate such degradation but typically {\color{blue}designed for} graph neural networks (GNNs) with handcrafted environment partitions, which may amplify perturbations and inaccurately capture invariant patterns. We propose Graph Invariant Attention (GIA), a lightweight and plug-and-play framework designed for Graph Transformers (GTs) to learn environment-invariant features directly in the attention space without prior environment knowledge. GIA consists of two complementary components: (i) an Environment Perturbation Module (EPM) that dynamically generates worst-case environments via probabilistic attention masking, and (ii) an Invariant Feature Capture (IFC) module that uses adversarial masking to suppress spurious correlations and strengthen invariant representations. By operating entirely in attention space, GIA avoids modifying graph structure and can be seamlessly integrated into existing GT architectures. Extensive experiments on synthetic and real-world OOD benchmarks show that GIA consistently outperforms state-of-the-art GIL and data-augmentation methods, {\color{blue}and also generalizes better in real-world scenarios}, improving both robustness and interpretability across diverse distributional shifts.
+
+
+
+
+\end{abstract}
+
+%
+
+% Use if graphical abstract is present
+%\begin{graphicalabstract}
+%\includegraphics{}
+%\end{graphicalabstract}
+
+% Research highlights
+\begin{highlights}
+
+
+\item {\color{blue}Proposes a plug-and-play Graph Invariant Attention (GIA) framework for Graph Transformers to achieve robust out-of-distribution generalization.}
+\item {\color{blue}Explores the capabilities of graph transformers in out-of-distribution scenarios to address the amplification of message passing under perturbations.}
+\item Designs an Environment Perturbation Module (EPM) to dynamically generate worst-case environments in attention space.
+\item Introduces an Invariant Feature Capture Module (IFC) using adversarial masking to enhance invariant feature extraction.
+\item Achieves superior performance over state-of-the-art baselines on multiple OOD graph classification benchmarks.
+\end{highlights}
+
+% Keywords
+% Each keyword is seperated by \sep
+\begin{keywords}
+Graph Transformers \sep 
+Out‑of‑distribution \sep 
+Adversarial Training \sep 
+Graph Invariant Learning
+\end{keywords}
+
+\maketitle
+
+% Main text
+\section{Introduction}\label{}
+
+Graph Learning (GL) \cite{ZHANG2024112488,yu2023towards} has advanced rapidly in both theory and applications, with uses in medical diagnosis \cite{ahmedt2021graph}, financial risk assessment \cite{sun2024research}, and molecular property prediction \cite{zang2023hierarchical}. Most existing GL algorithms, however, assume a homogeneous data distribution \cite{yu2023towards}, while real-world data generation is complex and uncontrolled, often producing substantial distribution shifts between training and testing \cite{hu2020open,ji2023drugood,koh2021wilds}. For example, a disease-prediction model trained at a large tertiary hospital benefits from consistent, high-quality imaging and well-recorded histories; when deployed in a remote clinic, the graph data can differ markedly (sparser cases, missing features, or greater noise), and such out-of-distribution (OOD) shifts can sharply increase misdiagnosis risk (see Fig.~\ref{fig:1}).
+
+Graph invariant learning (GIL) addresses OOD challenges by creating multiple training environments and optimizing models for worst-case shifts, enabling GNNs to identify robust, invariant features \cite{wu2022handling,LI2025113883,SHAN2024112107}. {\color{blue}Existing GIL methods typically exploit GNNs’ message-passing, which can propagate and amplify small local perturbations across the graph and thus hurt OOD performance ; this amplification effect has received limited attention in GIL. To extract more accurate invariant features, recent works \cite{wu2022discovering,liu2023flood,ZHANG2024111620,jia2024graph} often leverage prior knowledge to decouple invariant structures from spurious ones and construct explicit environments that aid invariant feature learning.However, existing methods do not address the core problem that message-passing amplifies tiny local perturbations. }They also rely on prior knowledge to perturb graph data and construct environments. As a result, purported “invariant features” remain sensitive to environmental changes, lack sufficient precision and robustness, and can even disturb the graph structure. For example, human brain networks contain regions with similar connectivity patterns but different functions, indicating that unfiltered “invariant structures” may fail under environmental shifts \cite{xu2025brainood}.
+\begin{figure}[h]
+    
+    \centering
+    \includegraphics[width=1\linewidth]{medical.pdf}
+    \caption{Models are trained on data from tertiary hospitals with complete data specification; when tested on data from remote areas, they face many different OOD problems.}
+    \label{fig:1}
+\end{figure}
+
+
+
+\begin{table}%[]
+
+\caption{{\color{blue}Comparison of GIN\cite{xupowerful} and MHA performance across three datasets with distinct distribution shifts. Settings remain consistent: SST2-length represents length shift, Motif denotes size shift, and Motif indicates basis shift \cite{gui2022good}.}}
+\label{tb1}
+\begin{tabular*}{\tblwidth}{@{}LCCC@{}}
+\toprule
+\textbf{Method} & \textbf{SST2-length} & \textbf{Motif-basis} & \textbf{Motif-size} \\
+\midrule
+GIN &57.41± 3.03  & 60.38± 2.73  & 41.24± 4.15  \\
+GT(MHA)&65.23± 2.89  &81.28± 1.67  &76.24± 3.94  \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=1\linewidth]{Eg1.pdf}
+%     \caption{After perturbing node 1 in a standard neural network, the perturbation information will be passed to one-hop neighboring nodes 2, 3, and 6, and similarly, the second-hop nodes 4 and 5 will aggregate the perturbation information, which extends to the whole graph, leading to the model's erroneous judgment. }
+%     \label{fig:2}
+% \end{figure}
+
+
+
+
+{\color{blue}To mitigate bias amplification from message passing, we adopt Graph Transformers (GTs) \cite{dwivedi2021generalization,WU2025114031,ZHUANG2025112874}. Compared with GNNs, GTs use self-attention that directly models pairwise node dependencies, allowing the model to adaptively weight node interactions and reduce the influence of anomalous or perturbed nodes (seeFig.~\ref{fig:2} and Table~\ref{tb1}). However, research on GTs under OOD settings is limited, and no prior work rigorously combines GTs with graph invariant learning. Applying existing GIL methods to GTs is challenging because those methods are designed for GNNs and difficult to directly couple them with attention-based architectures. Moreover, constructing environments for GTs without prior knowledge remains difficult.}
+
+We propose Graph Invariant Attention (GIA), a GIL framework designed for GTs that concentrates perturbation and consistency operations in attention space and couples them directly with the attention mechanism, yielding plug-and-play compatibility with different GT variants. GIA has two complementary modules. The Environment Perturbation Module (EPM) perturbs the attention space to generate diverse environments and selects the one with the largest distributional shift via a maximum-loss criterion. The Invariant Feature Capture (IFC) module then learns robust invariant features within this shift-maximized environment, improving generalization under distributional shifts.
+ 
+
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{attention_heatmaps_main_light_square.pdf}
+    \caption{{\color{blue}On the left side of the figure is the normalized adjacency matrix of GNN, and on the right side is the attention weight matrix of Graph Transformer. The horizontal and vertical coordinates are the node indexes, and the color shades indicate the magnitude of the weights for “reading in” information from row nodes to column nodes. It is clearly observable that GTs exert a certain degree of suppression on disturbances.}}
+    
+    \label{fig:2}
+\end{figure}
+\FloatBarrie
+
+Rather than explicitly generating or storing prior knowledge of the graph structure, GIA dynamically constructs training environments by perturbing attention weights, thereby ensuring that the extracted invariant features remain accurate and robust while avoiding corruption of the underlying graph data. Moreover,as a lightweight plug-and-play module, GIA can be seamlessly integrated into various GT architectures, effectively enhancing out-of-distribution (OOD) generalization performance across diverse graph learning tasks. 
+
+Finally, This method is designed for the usability of real expert systems. In scenarios such as molecular substructure bias\cite{zang2023hierarchical},  {\color{blue}supercapacitor performance forecast\cite{EMADELDEEN2024113556}}, social network community drift and changes in user transaction structures for recommendations, {\color{blue}EPM+IFC can serve as a “robust plug-in” for existing GTs, directly inserted into the training process to suppress structural spurious correlations. Regarding deployment, we discuss and evaluate computational resources, training complexity, and training time. Furthermore, our experiments approximate real-world domain drift using representative offset datasets, demonstrating that GIA effectively simulates and mitigates such genuine distribution shifts.}
+
+The contributions of this paper are summarized as follows:
+\begin{itemize}
+    \item  %We systematically investigate the use of GTs for graph invariant learning and introduce a GT‑based GIL framework.
+    {\color{blue}We propose a graph-invariant learning framework for GTs to explore the potential of GTs in graph-invariant learning applications.}
+    \item  We develop an environment perturbation strategy that obviates handcrafted splits and better uncovers invariant graph features.
+    \item %We design an attention mechanism that directs models to environment‑independent signals, markedly improving OOD generalization.
+    We propose a graph-invariant paradigm that operates on the attention space and can be directly coupled with multiple GTs, significantly enhancing OOD generalization capabilities.
+    \item %We validate GIA on synthetic and real‑world benchmarks, demonstrating its superior performance over state‑of‑the‑art methods under diverse distribution shifts.
+    {\color{blue}Validate GIA against synthetic and real-world benchmarks. Analyze its advantages and limitations in practical applications.}
+\end{itemize} 
+
+
+
+\section{Preliminaries}\label{}
+\subsection{Notation}
+%% Inline mathematics is tagged between $ symbols.
+{\color{blue}A graph dataset is denoted by $\mathcal{G}=\{G_n\}_{n=1}^N$, where each graph $G_n=(V_n,E_n)$. Let $Y=\{y_a\}_{a=1}^N$ be the set of labels. $V_n=\{v_i\}_{i=1}^{C_n}$ denotes the node set of graph $n$ and $E_n$ its edge set; $x_i$ is the feature of node $v_i$. Let $e$ be a random variable representing the environment and $\mathcal{E}$ the set of all environments. Training and test distributions may differ, i.e., $P(G_{\mathrm{train}})\neq P(G_{\mathrm{test}})$. We denote by $\{m^{(z)}\}_{z=1}^Z$ a set of candidate mask matrices. $T_{ij}$ denotes the attention score between nodes $i$ and $j$. $F$ denotes the forward propagation result (model output).}
+\begin{table}[ht]
+\centering
+\caption{}
+\label{tbl:notation_en}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Notation} & Definition \\
+\midrule
+$\mathcal{G},G$ & set of graphs, a graph \\
+$Y,y$ & set of labels, a label \\
+$i,j$ & node indices \\
+$V_n,\ v_i,\ v_j$ & node set of graph $n$, $i$th/$j$th node \\
+$F,\ f$ & forward result, predictor \\
+$P,\ p$ & distribution, probability \\
+$N,\ n$ & number of graphs,graph index \\
+$M,\ m$ & probability matrix, candidate mask matrix \\
+$ \mathcal{L}, a$ &loss function, label index \\
+$Z,\ z$ & number of candidate matrices,matrice index \\
+$C_n$ & node count (graph $n$) \\
+$D,\ d$ & number of edges, edge index \\
+$\lambda$ & weight for the EPM loss \\
+$\alpha$ & weight for the consistency loss \\
+$\tau,\ \mu(x)$ & sparsity weight, hard mask \\
+{\color{blue}$X, x$} & Node feature matrix,feature \\
+$T,\ \mathcal{E}$ & attention score, environments \\
+$e,\ \mathbb{E}$ & an environment, expectation \\
+$E_{ij}$ & edge between node $i$ and $j$ \\
+{\color{blue}$s, h\ $} & perturbation strength,hidden dimension    \\
+$\mathrm{KL}(\cdot\|\cdot),\ |\cdot|$ & KL divergence, absolute value \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Graph Invariant Learning}
+Graph invariant learning seeks to construct multiple training environments that maximize distributional shifts while minimizing task loss. GIA assumes that truly invariant relationships remain stable across environments.We generate diverse environments by aggregating environment-specific distractions and select the environment with the largest distributional shift. 
+Then we inject adversarial biases in the attention space and perform adversarial training under the worst-case environment to minimize task loss and promote robust invariant features. The objective is
+\[
+\min_f\;\max_{e\in\mathcal{E}}\; \mathbb{E}_{(x,Y)\sim P(\cdot\mid e)}\!\big[\mathcal{L}(f(x),Y)\big]. \tag{1}
+\]
+
+
+
+
+\subsection{Problem Definition}
+For graph-level OOD generalization, given a graph $G$ we consider the joint distribution under environment $e$:
+\[
+P(G,Y\mid e)=P(G\mid e)\,P(Y\mid G,e). \tag{2}
+\]
+Training data are sampled from $P(G_{\mathrm{train}})$ while test data come from a shifted distribution $P(G_{\mathrm{test}})$, with $P(G_{\mathrm{train}})\neq P(G_{\mathrm{test}})$. We focus on graph classification: the goal is to learn a predictor that generalizes to $P(G_{\mathrm{test}})$ despite such shifts.
+
+\section{Methodology}\label{}
+This section is organized as follows. In Section  3.1\hyperref[GIA], we introduce the  overall Graph Invariant Attention (GIA) framework. Sections  3.2\hyperref[epm] and  3.3\hyperref[ifc] detail the two core modules of GIA: the Environment Perturbation Module (EPM)  and the Invariant Feature Capture Module (IFC) , respectively. Finally, Section  3.4\hyperref[gtl] explains how to integrate GIA with the GT layer and apply it to graph classification.
+
+
+
+\subsection{Overall Framework}
+Figure~\ref{fig:3} illustrates the architecture. {\color{blue}Algorithm 1 describes the GIA training process.}The backbone is a Graph Transformer layer (GTL) \cite{dwivedi2021generalization}. GIA comprises two submodules: the Environment Perturbation Module (EPM) and the Invariant Feature Capture Module (IFC). Given an input graph, we compute node/edge embeddings (augmented by Laplacian positional encodings) and feed them to the GT layer. The query/key projections are also forwarded to the IFC. IFC uses a Gradient Reversal Layer (GRL) during adversarial training to learn masks that suppress environment-correlated shallow features. Simultaneously, EPM generates multiple attention-perturbation matrices and selects the worst-case perturbation via a maximum-loss criterion. The masks from IFC and EPM are injected as additive biases into the GT attention scores. Both submodules operate entirely in attention space (no direct modification of raw graph data), enabling plug-and-play integration with various GT variants. The extracted invariant features are passed to a downstream classification head.
+
+\begin{algorithm}[ht]
+\caption{{\color{blue}GIA Training Process}}
+\label{alg:gia-training}
+
+\begin{algorithmic}[1]
+  \Require Graph set $\mathcal{G}=\{(G_n,X_n,y)\}_{n=1}^{N}$, predictor $f(\cdot;\mathbf w)$, loss function $\mathcal{L}$, distribution $P$ (for sampling environments), optimizer $\mathcal{O}$, weights $\alpha,\tau,\lambda>0$, number of candidate mask matrices $Z$, node-count per graph $C_n$, feature/hidden dim $h$.
+  \Ensure Updated model parameters $\mathbf w$.
+  \For{each mini-batch $(G,X,y)$ sampled from $\mathcal{G}$}
+    \State $F_{\mathrm{clean}} \leftarrow f(G,X)$
+    \State $\mathcal{L}_{\mathrm{task}} \leftarrow \mathcal{L}\big(F_{\mathrm{clean}}, y\big)$
+
+    \State $(X_{\mathrm{adv}},\,\mu(x)) \leftarrow \mathrm{GenAdv}_{\mathrm{IFC}}(f, G, X, y)$
+    \State $F_{\mathrm{adv}} \leftarrow f(G, X_{\mathrm{adv}})$
+    \State $\mathcal{L}_{\mathrm{asa}} \leftarrow \dfrac{1}{C_n}\sum_{i=1}^{C_n}\mathrm{KL}\!\big(F_{\mathrm{clean},i}\,\|\,F_{\mathrm{adv},i}\big)$
+    \State $\mathcal{L}_{\mathrm{reg}} \leftarrow \dfrac{1}{C_n}\sum_{i=1}^{C_n}\big|\mu(x_i)\big|$
+    \State $\mathcal{L}_{\mathrm{IFC}} \leftarrow \alpha\,\mathcal{L}_{\mathrm{asa}} + \tau\,\mathcal{L}_{\mathrm{reg}}$
+
+    \State initialize $\{\ell^{(z)}\}_{z=1}^{Z} \leftarrow \varnothing$
+    \For{$z=1,\dots,Z$}
+      \State $e^{(z)} \sim P$
+      \State obtain $M^{(z)}$
+      \State $F^{(z)} \leftarrow f_{\mathrm{pert}}(G, X, M^{(z)})$
+      \State $\ell^{(z)} \leftarrow \mathcal{L}\big(F^{(z)}, y\big)$
+    \EndFor
+    \State $z^{\star} \leftarrow \arg\max_{z}\,\ell^{(z)}$
+    \State $\mathcal{L}_{\mathrm{EPM}} \leftarrow \lambda\cdot\max_{z}\ell^{(z)}$
+    \State inject $M^{(z^{\star})}$
+
+    \State $\mathcal{L}_{\mathrm{total}} \leftarrow \mathcal{L}_{\mathrm{task}} + \mathcal{L}_{\mathrm{IFC}} + \mathcal{L}_{\mathrm{EPM}}$
+    \State $\mathcal{O}.\mathrm{zero\_grad}()$
+    \State compute $\nabla_{\mathbf w}\mathcal{L}_{\mathrm{total}}$
+    \State $\mathcal{O}.\mathrm{step}()$
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{frame.pdf}
+    \caption{The overall framework of the new invariant learning paradigm of GIA and GTs. Thick arrows indicate data flow, black arrows indicate data direction within each structure, red dashed arrows indicate gradient reversal for adversarial training in IFC, and blue arrows indicate the role of masks.}
+    \label{fig:3}
+\end{figure*}
+
+
+
+%A key property of GIA is that both submodules operate entirely in the attention space rather than on raw node features, thereby avoiding direct modification of the graph structure and allowing seamless, plug-and-play integration with diverse GT variants. This design compels the model to focus on environment-independent and robust features, even under the most challenging distribution shifts. The extracted invariant features are finally passed to a downstream classification layer for graph-level prediction.
+\label{GIA}
+
+\subsection{Environment Perturbation Module  (EPM)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.2\linewidth]{1_cropped.pdf}
+    \caption{{\color{blue}Schematic diagram of graph data processing through EPM. The graph data structure remains intact, while the information perceived by the attention mechanism is perturbed.}}
+    \label{fig:4}
+\end{figure}
+
+To eliminate reliance on inaccurate prior knowledge and avoid direct perturbations to the original graph data, we designed the Environment Perturbation Module (EPM), which operates entirely within the attention space. EPM dynamically generates a perturbed environment by masking specific node–node interactions within the attention matrix, selecting the environment exhibiting the greatest distribution shift for graph-invariant learning.
+
+Specifically, we randomly initialize the matrix \(M\in\mathbb{R}^{N\times C_{max}}\), where \(N\) denotes the number of graphs in the dataset and \(C_{max}\) represents the maximum number of nodes across all graphs. Each row of \(M\) passes through a learnable normalization layer to generate a probability distribution over the \(C_{max}\) nodes, indicating the likelihood of each node being perturbed. {\color{blue}This design ensures that perturbation selection is neither purely random nor dependent on fixed topological or attribute rules. Instead, node importance is learned adaptively through end-to-end training—nodes with greater impact on task performance receive higher perturbation probabilities. This scale-free design guarantees relatively consistent perturbation intensity for both large and small graphs.}
+
+Based on this probability distribution, we iteratively remove \(s\) nodes without replacement, guided by their corresponding probability values,\(s\) can represent the perturbation strength, the indices of selected nodes are recorded. Repeating this process \(n\) times yields a candidate mask matrix \(m\in\mathbb{R}^{N\times s}\). After repeating this operation \(Z\) times, a set of candidate mask matrices \(\{m^{(z)}\}_{z=1}^Z\) is obtained. {\color{blue}Although the node selection process itself is discrete, through loss-weighted sums and gradient backpropagation across the candidate mask set, EPM's perturbation selection remains a discrete operation while the overall optimization is kept end-to-end differentiable.}
+
+For each mask matrix, specific perturbation positions are determined by their association probabilities. If \(m[n,i]=- \infty\), it indicates node \(i\) in graph \(n\) is masked (i.e., this node and all its incoming/outgoing attention entries are removed). These masks are subsequently applied to the attention mechanism, selectively perturbing node–node interactions within the graph. {\color{blue}Essentially, this is equivalent to simultaneously masking all incoming and outgoing attentions of the selected node, thereby introducing structural perturbations while avoiding any direct modifications to the original graph structure(see Figure~\ref{fig:4}).}
+
+
+
+For each perturbation configuration, we evaluate the corresponding task loss and employ a worst-scenario selection (WSL) strategy \cite{liao2019worst} to identify the most adverse environment. This process aims to instantiate the environment causing the greatest performance degradation, thereby promoting robust graph-invariant learning. To optimize this selection during training, we adopt the following objective function:
+\[
+\mathcal{L}_{\mathrm{EPM}} \;=\; \lambda \cdot \max_{z \in \{1, \ldots, Z\}} \mathcal{L}^{(z)}. \tag{3}
+\]
+
+where \(\mathcal{L}_{\mathrm{EPM}}\) denotes the EPM loss, \(\lambda\) is the weight of the EPM loss (default \(1.0\)), and \(\mathcal{L}^{(z)}\) is the loss under the \(z\)-th candidate mask. Finally, we incorporate the selected worst-case mask \(m_{\max}\) as a bias into the attention mechanism to control the aggregation process.
+
+Overall, the Environment Perturbation Module (EPM) avoids direct manipulation of raw graph data and does not rely on any prior knowledge of the underlying graph structure by dynamically constructing environments at the node level. This design ensures fine-grained perturbations while preserving the integrity of the original graph, thereby preventing data corruption and maintaining consistency across environments.
+
+
+\label{epm}
+
+\subsection{Invariant Feature Capture Module (IFC)}
+
+
+
+
+To ensure that the model learns sufficiently robust invariant features under the worst environmental conditions, we present the Invariant Feature Capture Module (IFC), which leverages adversarially trained Graph Transformers to enhance invariance. Specifically, IFC derives a learnable soft mask matrix from the input query–key pairs \((Q,K)\), where each element quantifies the reliability of the corresponding node’s contribution to the attention computation. This mask is used within a Gradient Reversal Layer (GRL) setup; we compute the Kullback–Leibler (KL) divergence between the adversarial forward pass and the clean forward pass to measure distributional inconsistency.
+
+
+{\color{blue}This design serves two core functions. First, by forcing the model to maintain consistent output distributions under clean and adversarial perturbations, it effectively reduces overfitting to specific attention patterns and thus acts as a regularizer. Second, through adversarial training, it actively guides the model to strip away environmentally sensitive shallow features, thereby enhancing deeper invariant features that are robust to distribution shifts. Through this adversarial masking, IFC suppresses shallow, environment-sensitive features and strengthens the extraction of genuinely environment-invariant representations. This process ultimately guides the model to focus on capturing higher-order robust features that remain stable under distribution shifts.} IFC's adversarial training is optimized via the following loss function:
+
+\[
+\mathcal{L}_{\mathrm{asa}} = \frac{1}{N} \sum_{n=1}^{N}  \mathrm{KL}\!\left( F_{\mathrm{clean}, n} \,\middle\|\, F_{\mathrm{adv}, n} \right),\tag{4}
+\]
+where \(F_{\mathrm{clean}}\) is the clean forward result and \(F_{\mathrm{adv}}\) is the adversarial forward result.
+
+
+This mechanism can be interpreted as learning \textit{meta-knowledge}—that is, learning how to extract and utilize information from the input—rather than relying solely on fixed, predefined priors. The learned soft mask is subsequently transformed into a hard mask \(\mu(x)\), which serves as an attentional bias. The resulting \(\mu(x)\) is directly added to the attention scores, enabling the explicit suppression of selected nodes during global aggregation and thus explicitly and differentiably adjusting the weights of interactions between nodes during the aggregation process. By defining \(\mu(x)\) as a function of the input \(x\), the model adaptively identifies and masks node-level information that could act as shortcut features under distributional shifts. This forces the network to focus on capturing deeper, more robust, and truly invariant relational patterns, thereby enhancing its generalization performance in out-of-distribution (OOD) scenarios. The Gradient Reversal Layer (GRL) creates an adversarial game in this process: during forward propagation, the mask acts normally on attention; during backward propagation, GRL reverses the sign of gradients flowing to the mask generator, prompting the feature extractor to learn representations insensitive to such perturbations, while the mask generator continuously explores attention patterns that can disrupt the current features.
+
+To mitigate potential instability or performance degradation introduced by the adversarial module, a regularization term is incorporated into the training objective. This term constrains the learning dynamics of the mask to prevent excessive information suppression while preserving the model’s expressive capacity. We define the regularization loss as
+\[
+\mathcal{L}_{\mathrm{reg}} = \frac{1}{N} \sum_{n=1}^{N} \|\mu(x_n)\|_1. \tag{5}
+\]
+
+In summary, the IFC loss function is
+\[
+\mathcal{L}_{\mathrm{IFC}} = \alpha\, \mathcal{L}_{\mathrm{asa}} + \tau\, \mathcal{L}_{\mathrm{reg}}, \tag{6}
+\]
+where \(\alpha\) is the weight for the consistency loss (default \(1.0\)) and \(\tau\) is the weight for the sparsity/regularization loss (default \(0.1\)).
+
+Overall, the IFC module applies hard-mask perturbation in the GT's attention space and uses gradient reversal to encourage the model to focus on environment-invariant features. IFC can learn to minimize task loss under the worst environment.
+\label{ifc}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Graph Transformer Layer (GTL)}
+
+
+By recent research and our experimental verification, Graph Transformers (GTs) effectively alleviate the over-smoothing phenomenon commonly observed in GNNs and mitigate the indiscriminate amplification of noise and bias in deep architectures. Motivated by these advantages, we integrate the GT layer with the proposed GIA framework. Specifically, the input graph data are first processed by an embedding layer, where both node and edge attributes are projected into a unified embedding space. For a given graph \(G_n\), each node \(v_i\) is represented by its feature vector \(x_i\), augmented with Laplacian positional encodings. These are linearly projected into hidden representations through a learnable transformation. Concurrently, the EPM and IFC modules generate attention-space masks, which are incorporated as additive biases into the attention score computation:
+
+\[
+T_{ij} \;=\; \frac{Q_i \cdot K_j}{\sqrt{h}} \;+\; \mu(x)_{ij} \;+\; m_{\max,ij}, \tag{7}
+\]
+where \(\mu(x)_{ij}\) denotes the learnable mask generated by IFC for the \((i,j)\)-entry and \(m_{\max,ij}\) is the maximal-loss mask selected by EPM for the same entry.
+
+Subsequently, the edge features are modulated through a dot-product interaction with the corresponding edge encodings, and the resulting representations are propagated to the next layer of the model. The transformed features are then processed by a feed-forward network, which is encapsulated within a residual connection and preceded and followed by layer normalization to enhance training stability and gradient flow.
+
+By coupling the GT layer with the proposed GIA framework, the model parameters can be jointly optimized in an end-to-end manner for the target downstream task, enabling robust performance under OOD conditions. In this work, we focus on the graph classification task in OOD scenarios. Given a classification problem with \(A\) categories, let \(Y\) denote the ground-truth labels of the target graphs. The objective is to map the learned graph-level representation to its corresponding categorical label. The graph feature vector is passed to a multi-layer perceptron (MLP) to obtain an unnormalized prediction score for each category.
+
+The loss function for graph classification is:
+\[
+\mathcal{L}_{\mathrm{task}} \;=\; -\frac{1}{N} \sum_{n=1}^N \sum_{a=1}^A Y_{n,a} \log p_{n,a}, \tag{8}
+\]
+where \(p_{n,a}\) denotes the predicted probability of class \(a\) for graph \(n\).
+
+The overall loss function is:
+\[
+\mathcal{L} \;=\; \mathcal{L}_{\mathrm{EPM}} + \mathcal{L}_{\mathrm{IFC}} + \mathcal{L}_{\mathrm{task}}. \tag{9}
+\]
+\label{gtl}
+
+
+\section{Experiments}
+To evaluate the effectiveness of our approach, we conduct experiments on various benchmarks following the IGM setup \cite{jia2024graph}. All experiments are run with five random seeds on a V100 (32\,GB) GPU.
+
+We perform experiments on nine datasets to address the following research questions:
+\begin{itemize}
+\item \textbf{RQ1:} Can our method outperform traditional approaches and our designed baseline under different OOD scenarios? How well does the proposed method support plug-and-play integration?
+\item \textbf{RQ2:}{\color{blue} Are the key modules of the proposed method effective? How does the alternative perturbation strategy perform? } 
+\item \textbf{RQ3:}{\color{blue} What are the results of the noise-level sensitivity analysis? Is the model sensitive to hyperparameters and graph size?}
+\item \textbf{RQ4:}{\color{blue} What are the training-time and inference costs of our method? We report significance tests and confidence intervals.}
+\item \textbf{RQ5:}{\color{blue} Case studies and failure cases.}
+\end{itemize}
+
+\subsection{Experimental Settings}
+\textbf{Datasets:} We conduct experiments on three synthetic datasets and six real-world datasets to validate our module. A brief overview of each is as follows:
+\begin{itemize}
+\item \textbf{Synthetic.} We use the SPMotif dataset with three bias ratios (0.33, 0.66, 0.9) to evaluate performance under structural and degree-distribution shifts, following the DIR setup \cite{wu2022discovering}. Each graph contains a causal subgraph and a spurious subgraph. A bias ratio of 0.33 means that 33\% of spurious-subgraph labels match the causal labels, with larger ratios indicating stronger spurious correlations.
+\item \textbf{Text and Social.} Graph-SST5 \cite{socher2013recursive} is a five-class sentiment-analysis dataset where OOD arises from phrase-level vs.\ sentence-level patterns: the training set contains common phrase sentiments, while the test set includes long, nested negations unseen during training. Graph-Twitter \cite{dong2014adaptive} models Twitter interactions (users and tweets) with edges for retweets and replies. Its OOD scenario is characterized by varying network densities across user groups. Both exhibit degree-distribution shift.
+\item \textbf{Protein Size.} DD \cite{Morris+2020} classifies enzyme graphs: training graphs have 200--400 nodes, whereas test graphs exceed 500 nodes. PROTEINS \cite{Morris+2020} represents protein fragments (nodes) and their adjacencies (edges); its training set is dominated by small graphs, while the test set includes structures with over 200 nodes. Both DD \cite{Morris+2020} and PROTEINS \cite{Morris+2020} exhibit size-distribution shift.
+\item \textbf{Molecular Structure.} BBBP \cite{hu2020open} (Blood–Brain Barrier Penetration) uses aromatic or heterocyclic backbones in training, while the test set contains novel scaffolds. BACE \cite{hu2020open} training covers common pyridine, thiazole, and benzene derivatives, whereas testing includes rare substitution patterns and reactive groups. Both BBBP \cite{hu2020open} and BACE \cite{hu2020open} represent structure-distribution shifts.
+\end{itemize}
+
+Experiments are performed on these nine datasets. For each dataset, we split the data into 80\% training, 10\% validation, and 10\% testing.
+
+\textbf{Evaluation metrics:} Following prior work \cite{jia2024graph}, we use accuracy for SPMotif, Graph-SST5 \cite{socher2013recursive}, and Graph-Twitter \cite{dong2014adaptive}; ROC-AUC for BBBP \cite{hu2020open} and BACE \cite{hu2020open}; and MCC for DD \cite{Morris+2020} and PROTEINS \cite{Morris+2020}.
+\begin{table}%[]
+\caption{Graph classification accuracy (\%) on the synthetic dataset \textsc{SPMotif} under three different offset levels. Best results are bolded.}
+\label{tbl3}
+\begin{tabular*}{\tblwidth}{@{}LCCC@{}}
+\toprule
+\textbf{Method} & \textbf{SPMotif-0.33} & \textbf{SPMotif-0.6} & \textbf{SPMotif-0.9} \\
+\midrule
+ERM\cite{donini2018empirical}            & 59.49 ± 3.50  & 55.48 ± 4.84  & 49.64 ± 4.63 \\
+G-Mixup\cite{han2022g}        & 60.31 ± 2.89  & 58.74 ± 5.58  & 53.60 ± 5.01 \\
+Manifold-Mixup\cite{verma2019manifold} & 58.33 ± 4.05  & 56.63 ± 2.96  & 49.81 ± 4.25 \\
+IRM\cite{DBLP:journals/corr/abs-1907-02893}            & 57.15 ± 3.98  & 61.74 ± 1.32  & 45.68 ± 4.88 \\
+V-REx\cite{krueger2021out}          & 54.64 ± 3.05  & 53.60 ± 3.74  & 48.86 ± 9.69 \\
+DIR\cite{wu2022discovering}            & 58.73 ± 11.90 & 48.72 ± 14.80 & 41.90 ± 9.39 \\
+{\color{blue}DIR+GT}           & 34.60 ± 2.20 & 33.96 ± 0.72 & 32.92 ± 0.57 \\
+GSAT\cite{miao2022interpretable}           & 56.21 ± 7.08  & 55.32 ± 6.35  & 52.11 ± 7.56 \\
+CIGA\cite{chen2023pareto}           & 77.33 ± 9.13  & 69.29 ± 3.06  & 63.41 ± 7.38 \\
+{\color{blue}GPS1\cite{rampavsek2022recipe}}            & 69.40 ± 3.34  &  67.40 ± 3.34  &  65.70 ± 2.45  \\
+{\color{blue}GPS2\cite{rampavsek2022recipe}}            &  67.40 ± 2.56  &  65.40 ± 3.07  &  64.70 ± 4.54  \\
+{\color{blue}SAN\cite{kreuzer2021rethinking}}            & 65.40 ± 3.34 & 44.00 ± 2.34 & 71.70 ± 2.45 \\
+{\color{blue}SAN+ERM}            & 75.56 ± 2.89 & 54.10 ± 3.33 & 72.44 ± 2.02 \\
+{\color{blue}SAN+IRM}            & 34.48 ± 1.65 & 61.26 ± 2.23 & 55.87 ± 3.46 \\
+{\color{blue}Mixup+ERM\cite{wang2021mixup}}             & 80.15 ± 2.05 & 78.43 ± 2.67 &  69.97 ± 2.03  \\
+IGM\cite{jia2024graph}             & 82.36 ± 7.39  & 78.09 ± 5.63  & 76.11 ± 8.86 \\
+\textbf{Ours}  & \textbf{92.84 ± 2.03} & \textbf{92.73 ± 1.87} & \textbf{93.49 ± 0.92} \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\textbf{Baselines:} In addition to Empirical Risk Minimization (ERM) \cite{donini2018empirical}, we compare our approach to several representative frameworks:
+\begin{itemize}
+  \item \textbf{ManifoldMixup} \cite{verma2019manifold} is a regularization and data-augmentation method for supervised learning. It performs interpolation in a higher-dimensional feature space.
+  \item \textbf{G-Mixup} \cite{han2022g} is a data-augmentation method specifically designed for graph data, mainly used in graph classification tasks.
+  \item \textbf{IRM} \cite{DBLP:journals/corr/abs-1907-02893} is a method for finding a set of shared feature representations across multiple environments, allowing the same classifier to be ``optimal'' in all environments.
+  \item \textbf{V-REx} \cite{krueger2021out} is a graph-invariant learning framework that minimizes not only the average risk but also the variance of risks across multiple training environments.
+  \item \textbf{DIR} \cite{wu2022discovering} belongs to graph invariant learning. The method uses prior knowledge to extract ``invariant subgraphs'' and then combines them with other scrambled graph structures.
+  \item {\color{blue}\textbf{DIR+GT} represents a baseline that directly applies graph-invariant methods designed for GNNs to GTs.}
+  \item \textbf{EIIL} \cite{creager2021environment} is a method that, without knowing the environment divisions, first uses ERM to train a model that tends to classify using spurious features, then automatically groups the data into environments using sample losses, and finally performs invariant learning on these environments.
+  \item \textbf{IGM} \cite{jia2024graph} uses prior knowledge to divide each graph into two parts, ``invariant subgraphs'' and ``environment subgraphs.'' IGM is one of the most advanced graph invariant learning methods.
+  \item \textbf{CIGA} \cite{chen2023pareto} is an OOD generalization and invariant-representation learning method specifically designed for graph classification.
+  \item \textbf{GSAT} \cite{miao2022interpretable} is a graph learning method with OOD generalization capabilities; it uses randomized attention in graph neural networks to identify critical versus redundant or environment-related edges.
+
+  \item {\color{blue}\textbf{GPS1} \cite{rampavsek2022recipe} is the baseline used for experiments with GateGCN and Performer configurations; it represents the performance of GTs and message-passing hybrid architectures in OOD scenarios.}
+  \item {\color{blue}\textbf{GPS2} \cite{rampavsek2022recipe} is the baseline used for experiments with PNA and BigBird configurations; it also represents GTs and message-passing hybrid performance in OOD scenarios.}
+  \item {\color{blue}\textbf{SAN} \cite{kreuzer2021rethinking} is a Graph Transformer that captures attention and represents GT performance in OOD scenarios.}
+  \item {\color{blue}\textbf{SAN+EPM} represents the baseline combining SAN with consistency methods.}
+  \item {\color{blue}\textbf{SAN+IRM} represents the baseline combining SAN with an invariant-learning method.}
+  \item {\color{blue}\textbf{Mixup+EPM}\cite{wang2021mixup} represents the baseline combining graph data augmentation with consistency methods.}
+\end{itemize}
+
+\textbf{Backbone:} To validate the plug-and-play nature of GIA, we employ three backbones with different attention mechanisms:
+\begin{itemize}
+  \item \emph{GT Layer} \cite{dwivedi2021generalization}, which uses local attention to focus on each central node and its one-hop neighbors.
+  \item \emph{MHA} \cite{dwivedi2021generalization}, a variant that replaces the GT layer's local attention with fully connected global attention.
+  \item \emph{GNN-Trans} \cite{wu2021representing}, a hybrid architecture combining GNN and GT to leverage both local aggregation and self-attention.
+\end{itemize}
+
+\begin{table*}%[]
+\caption{Out-of-Distribution (OOD) generalization performance for graphs on real-world datasets. 
+We report results for graph classification under distributional shifts in degree, size, and structure. 
+Metrics: ROC-AUC for Graph-SST5 and Graph-Twitter, MCC for PROTEINS and DD, and accuracy (ACC) for BACE and BBBP. 
+Best results per dataset are bolded.}
+\label{tbl4}
+\begin{tabular*}{\tblwidth}{@{}LCCCCCC@{}}
+\toprule
+\textbf{Method} & \textbf{Graph-SST5} & \textbf{Graph-Twitter} & \textbf{PROTEINS} & \textbf{DD} & \textbf{BACE} & \textbf{BBBP} \\
+\midrule
+ERM\cite{donini2018empirical}          & 43.89 ± 1.73 & 60.81 ± 2.05 & 0.22 ± 0.09 & 0.27 ± 0.09 & 77.83 ± 3.49 & 66.93 ± 2.31 \\
+G-Mixup\cite{han2022g}        & 43.75 ± 1.34 & 63.91 ± 3.01 & 0.24 ± 0.03 & 0.29 ± 0.04 & 79.12 ± 2.75 & 68.44 ± 2.08 \\
+Manifold-Mixup\cite{verma2019manifold} & 43.11 ± 0.65 & 62.60 ± 1.87 & 0.23 ± 0.04 & 0.28 ± 0.06 & 78.85 ± 1.26 & 68.67 ± 1.38 \\
+IRM\cite{DBLP:journals/corr/abs-1907-02893}            & 43.69 ± 1.26 & 63.50 ± 1.23 & 0.21 ± 0.09 & 0.22 ± 0.08 & 77.51 ± 2.46 & 69.13 ± 1.45 \\
+V-REx\cite{krueger2021out}          & 43.28 ± 0.52 & 63.21 ± 1.57 & 0.22 ± 0.06 & 0.21 ± 0.07 & 76.96 ± 1.88 & 64.86 ± 2.13 \\
+EIIL\cite{creager2021environment}           & 42.98 ± 1.03 & 62.76 ± 1.72 & 0.20 ± 0.05 & 0.23 ± 0.10 & 79.36 ± 2.72 & 65.77 ± 3.36 \\
+DIR\cite{wu2022discovering}            & 41.12 ± 1.96 & 59.85 ± 2.98 & 0.25 ± 0.14 & 0.20 ± 0.10 & 79.93 ± 2.03 & 69.73 ± 1.54 \\
+{\color{blue}DIR+GT}                               & 28.18 ± 4.54 & 32.25 ± 3.64 &  0.05 ± 0.01 & 0.08 ± 0.02 & 40.53 ± 5.83 & 34.19 ± 4.83 \\
+GSAT\cite{miao2022interpretable}           & 43.72 ± 0.87 & 62.50 ± 1.44 & 0.21 ± 0.06 & 0.28 ± 0.04 & 79.63 ± 1.87 & 68.48 ± 2.01 \\
+CIGA\cite{chen2023pareto}           & 44.71 ± 1.14 & 64.45 ± 1.99 & 0.40 ± 0.06 & 0.29 ± 0.08 & 80.98 ± 1.25 & 69.65 ± 1.32 \\
+{\color{blue}GPS1\cite{rampavsek2022recipe} }                & 42.89 ± 1.87  & 58.45 ± 3.13  & 0.21 ± 0.06   & 0.22 ± 0.03 & 59.98 ± 3.77 & 56.76 ± 1.79 \\
+{\color{blue}GPS2\cite{rampavsek2022recipe} }               & 42.25 ± 2.69   & 56.15 ± 2.93   & 0.17 ± 0.04   & 0.22 ± 0.02 & 59.33 ± 2.44 & 56.32 ± 2.17 \\
+{\color{blue}SAN\cite{kreuzer2021rethinking}}              & 40.12 ± 1.15 & 56.12 ± 3.15 & 0.19 ± 0.05 & 0.25 ± 0.06 & 57.86 ± 2.17 & 55.45 ± 1.87 \\
+{\color{blue}SAN+ERM }                         & 44.65 ± 2.81  & 62.34 ± 1.48 & 0.12 ± 0.03 & 0.90 ± 0.02 & 74.23 ± 1.58 & 71.83 ± 1.14 \\
+{\color{blue}SAN+IRM }                     & 40.98 ± 2.78 & 59.13 ± 2.73 & 0.09 ± 0.03 & 0.08 ± 0.02 & 61.57 ± 2.98 & 60.25 ± 3.41 \\
+{\color{blue}Mixup+ERM\cite{wang2021mixup} }                  & 43.87 ± 1.14 & 63.44 ± 3.61 & 0.24 ± 0.05   & 0.21 ± 0.04 & 81.34 ± 1.78 & 68.95 ± 2.33 \\
+IGM\cite{jia2024graph}            & 46.69 ± 0.52 & 66.23 ± 1.58 & \textbf{0.43 ± 0.05} & \textbf{0.36 ± 0.04} & 82.65 ± 1.17 & 71.03 ± 0.79 \\
+Ours           & \textbf{48.33 ± 1.93} & \textbf{66.62 ± 0.77} & 0.27 ± 0.05 & 0.23 ± 0.05 & \textbf{83.65 ± 1.07} & \textbf{82.15 ± 0.93} \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\begin{table}%[]
+\caption{Performance comparison on three datasets with different methods.}
+\label{tbl5}
+\begin{tabular*}{\tblwidth}{@{}LCCC@{}}
+\toprule
+\textbf{Method} & \textbf{Graph-Twitter} & \textbf{BACE} & \textbf{SPMotif-0.9} \\
+\midrule
+GT GA + GIA & 63.44 ± 2.03 & 71.93 ± 3.27 & 33.49 ± 2.33 \\
+gnntrans + GIA      & 65.44 ± 1.35 & 82.93 ± 2.27 & 80.03 ± 2.33 \\
+GT Layer + GIA      & 66.62 ± 0.77 & 84.07 ± 1.07 & 93.49 ± 0.92 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Generalization capability and performance presentation (RQ1)}
+This section compares GIA with state-of-the-art frameworks for existing out-of-distribution (OOD) problems and our designed baseline, and verifies GIA's plug-and-play functionality.
+
+On synthetic datasets, we report results under bias ratios of 0.33, 0.6, and 0.9 (see Table ~\ref{tbl3}). On real-world datasets, we evaluate three types of distribution shifts—degree shift, size shift, and structural shift—with results shown in Table ~\ref{tbl3}. We assess GIA's plug-and-play capability in Table ~\ref{tbl4}. Based on these results, we draw the following conclusions.
+
+As shown in Table ~\ref{tbl3}, GIA maintains high and stable performance across all three bias strengths. Specifically, as the bias ratio increases from 0.33 to 0.9, GIA's average performance shows minimal decline, significantly outperforming most baseline methods. In contrast, traditional methods such as ERM, Mixup, IRM, and our baseline exhibit substantial performance degradation or instability as bias intensifies. Our approach outperforms the previous state-of-the-art method for GNNs, IGM \cite{jia2024graph}, by 13.67\%, demonstrating that our method more effectively captures invariant patterns under distributional shifts and thereby achieves superior OOD performance.
+
+Results on real-world datasets (Table ~\ref{tbl4}) further validate GIA's practicality and broad adaptability. Our method achieves state-of-the-art performance across five real-world tasks, outperforming the previous best by 3\% overall. Existing frameworks struggle to generalize consistently across all datasets: for instance, G-Mixup \cite{han2022g} underperforms ERM \cite{donini2018empirical} on Graph-SST5 \cite{socher2013recursive}, while IRM \cite{DBLP:journals/corr/abs-1907-02893} also lags behind ERM \cite{donini2018empirical} on most tasks.
+
+In degree-shift scenarios, our method outperforms all baselines comprehensively, achieving an average 2.27\% improvement over IGM \cite{jia2024graph}, which demonstrates robustness to degree shifts. In size-shift scenarios, our framework ranks third on PROTEINS \cite{Morris+2020} and seventh on DD \cite{Morris+2020}; it maintains performance comparable to existing methods but with relatively modest gains, indicating that GIA's improvements are limited for tasks dominated by fine-grained structural differences. Under structural-shift scenarios, our method achieves optimal performance with an average improvement of 6.27\%, indicating its ability to capture more robust invariant features under structural distribution shifts.
+
+The experimental results in Table ~\ref{tbl5} demonstrate that when using only local attention, the model achieves significant improvements across all OOD benchmarks. For instance, on the synthetic dataset SPMotif-0.9 \cite{wu2022discovering}, the baseline model achieves an accuracy of approximately 78\%, which increases to 92\% after incorporating GIA. In contrast, the combination of global attention and GIA also shows improvements on some datasets; however, on the highly heterogeneous SPMotif-0.9 \cite{wu2022discovering}, its accuracy drops to 33\%, significantly lower than the local-attention version. This comparison demonstrates that while global attention aids in capturing long-range dependencies, it tends to overlook the most critical local invariant subgraphs. In such scenarios, additional structural or positional encoding is required to supplement the model.
+
+To further investigate the generalizability of GIA, we integrated it into another hybrid backbone network, GNN-Trans \cite{wu2021representing}. Experimental results show that GNN-Trans + GIA outperforms the baseline and the GIA variants with the two aforementioned attention mechanisms on all three distribution-shifted datasets, achieving an average accuracy improvement of over 6.5 percentage points. Even under the most challenging OOD scenarios, it maintains accuracy exceeding 85\%.
+
+{\color{blue}These findings demonstrate that GIA's modular design not only adapts to diverse attention paradigms but also collaborates effectively with multiple GT backbones, consistently maintaining robust generalization capabilities when confronted with distribution shifts.
+
+
+
+Results from our designed baseline suggest that directly applying GNN-oriented graph invariant learning frameworks to GTs is inappropriate. Architectures combining message passing and GTs demonstrate greater robustness than GT architectures relying solely on attention. While combining GTs with consistency and invariance learning frameworks yields improvements, it remains suboptimal, which further underscores the importance of designing graph-invariance learning specifically for GTs. Combining graph data augmentation with consistency methods outperforms pure graph augmentation on structurally biased and synthetic datasets.}
+
+
+
+Overall, these experiments demonstrate that our method effectively learns robust and accurate invariant features, achieving significant advantages in OOD generalization.
+
+
+
+
+\subsection{Ablation Study of Key Modules and Perturbation Strategies (RQ2)}
+\begin{figure*}[t]%% placement specifier
+\centering%% For centre alignment of image.
+\includegraphics[width=1\linewidth]{spm tw.pdf}
+%% Use \caption command for figure caption and label.
+\caption{{\color{blue}Module Ablation Experiments for SPMotif-0.9 and Graph-Twitter.}}
+\label{fig:5}
+\end{figure*}
+\FloatBarrier
+
+\begin{figure*}[t]%% placement specifier
+\centering%% For centre alignment of image.
+\includegraphics[width=1\linewidth]{BACE_DD.pdf}
+%% Use \caption command for figure caption and label.
+\caption{{\color{blue}Module Ablation Experiments for DD and BACE.}}
+\label{fig:6}
+\end{figure*}
+\FloatBarrier
+
+
+{\color{blue}This section presents ablation studies using two types of experiments. First, we sequentially remove each module in GIA to evaluate its contribution to overall performance. Second, we compare the effectiveness of EPM's ``maximum-loss selection'' strategy with other perturbation methods.}
+
+
+In the first part, we deactivate each module in GIA and compare the results with the full GIA. Experiments were conducted on SPMotif-0.9 \cite{wu2022discovering}, DD \cite{Morris+2020}, Graph-Twitter \cite{dong2014adaptive}, and BACE \cite{hu2020open}. In the second part, we conducted experiments on four datasets—SPMotif-0.9 \cite{wu2022discovering}, DD \cite{Morris+2020}, Graph-Twitter \cite{dong2014adaptive}, and BACE \cite{hu2020open}—by replacing the ``maximum-loss selection'' with ``random masking selection'' and by applying IGM's decoupled recomposition perturbation.
+
+\begin{table}%[]
+\caption{{\color{blue}Ablation experiments on replacing perturbation strategies across three datasets: Graph-Twitter, BACE, and SPMotif-0.9. Random Perturbation refers to replacing WSL with random selection, while IGM denotes replacing EPM with direct perturbation of graph data using prior knowledge.}}
+\label{tbl6}
+\begin{tabular*}{\tblwidth}{@{}LCCCC
+@{}}
+\toprule
+\textbf{Method} & \textbf{Graph-Twitter} & \textbf{BACE} & \textbf{SPMotif-0.9} \\
+\midrule
+Random & 65.97± 0.92 & 82.87± 1.52 & 90.12± 0.72 \\
+IGM      & 65.17± 1.42 & 79.54± 1.32 & 94.73± 2.92 \\
+
+\bottomrule
+\end{tabular*}
+\end{table}
+
+
+The results of the first part are shown in Fig.~\ref{fig:5} and Fig.~\ref{fig:6}. We observe that the presence or absence of the environment-generation module has a large impact on model performance, which verifies the necessity of the Environment Perturbation Module (EPM). With the addition of the adversarial module (IFC), there are further performance improvements on SPMotif-0.9, Graph-Twitter \cite{dong2014adaptive}, and BACE \cite{hu2020open}. The GT layer alone \cite{dwivedi2021generalization} does not perform well in OOD scenarios; with the addition of EPM it can outperform state-of-the-art methods, and adding IFC further improves performance. In the SIZE OOD scenario, we observe that when IFC is absent the model performance improves significantly and the MCC reaches the second position compared to previous frameworks. Even without EPM, including IFC still leaves the GT layer \cite{dwivedi2021generalization} as the worst performer on the DD \cite{Morris+2020} dataset. IFC includes the adversarial-training module, which corroborates that the MCC metric is affected by adversarial regularization and that performance can slip on the DD \cite{Morris+2020} dataset.
+
+As shown in Table~\ref{tbl6}, when EPM perturbation is replaced with a random mask, it fails to outperform our maximum-loss selection strategy on any dataset, demonstrating that our method is better at selecting the worst-case environment to capture invariant features. When the perturbation strategy is changed to the one used by IGM, it performs exceptionally well only on the SPMotif dataset with a known prior-knowledge structure. However, it performs poorly on other real datasets with different distribution shifts. This demonstrates that relying on prior knowledge to partition environments introduces prior bias and exhibits poor generalization.
+
+{\color{blue}The above findings indicate that both GIA modules contribute to OOD generalization to varying degrees. The proposed perturbation strategy mitigates the influence of prior knowledge and proves more effective across cases.}
+\begin{table}%[]
+\caption{{\color{blue}Ablation experiment results for various hyperparameters and graph sizes.}}
+\label{tb7}
+\begin{tabular*}{\tblwidth}{@{}LCCC@{}}
+\toprule
+\textbf{Size} & \textbf{0.1} & \textbf{0.3}  & \textbf{0.7} \\
+\midrule
+Graph-Twitter & 65.17± 4.32  & 65.17± 3.92     & 65.38± 2.92  \\
+\bottomrule
+
+\toprule
+\textbf{Layers} & \textbf{1}  & \textbf{7} & \textbf{12} \\
+\midrule
+Graph-Twitter & 63.91± 1.67     & 67.63± 1.36  & 64.56± 2.56  \\
+\bottomrule
+
+
+\toprule
+\textbf{Heads} & \textbf{1} & \textbf{2} & \textbf{4}  \\
+\midrule
+Graph-Twitter & 65.61± 2.06  & 64.87± 0.31   & 66.47± 1.84   \\
+\bottomrule
+
+\toprule
+\textbf{Learning Rate} & \textbf{0.001} & \textbf{0.01} & \textbf{0.05}  \\
+\midrule
+Graph-Twitter & 64.88± 1.67  & 63.87± 1.67   & 50.00± 0.00   \\
+\bottomrule
+
+
+\toprule
+\textbf{s} & \textbf{1} & \textbf{10} & \textbf{20}  \\
+\midrule
+Graph-Twitter & 66.04± 0.67  &67.63± 2.54   &65.03± 1.39   \\
+\bottomrule
+
+\toprule
+\textbf{$\lambda$} & \textbf{0.5} & \textbf{2} & \textbf{5}  \\
+\midrule
+Graph-Twitter & 66.08± 2.17  & 66.73± 1.02   & 66.17± 1.34   \\
+\bottomrule
+
+\toprule
+\textbf{$\tau$} & \textbf{0.05} & \textbf{0.9} & \textbf{2}  \\
+\midrule
+Graph-Twitter & 66.18± 1.77  & 63.73± 3.66   & 62.57± 3.78   \\
+\bottomrule
+
+\end{tabular*}
+\end{table}
+\subsection{Ablation on Noise, Hyperparameters, and Graph Size (RQ3)}
+To evaluate GIA's sensitivity to noise levels, hyperparameters, and graph size, we conducted experiments on the Graph-Twitter dataset \cite{dong2014adaptive}.
+\begin{figure*}[t]%% placement specifier
+\centering%% For centre alignment of image.
+\includegraphics[width=1\linewidth]{gao.pdf}
+%% Use \caption command for figure caption and label.
+\caption{{\color{blue}Sensitivity Analysis of Feature Noise Levels on the Graph-Twitter dataset. Gaussian noise represents perturbations to node features, while edge noise reflects random edge deletions, reversals, and additions. The horizontal axis denotes the perturbation ratio.}}
+\label{fig:7}
+\end{figure*}
+\FloatBarrier
+{\color{blue}As shown in Table~\ref{tb7}, model performance remains nearly unchanged across three graph-scale settings, with the mean consistently around 65.2 and variance slightly decreasing as graph size increases. This indicates that GIA is robust to input graph scale: increasing graph size does not significantly alter average performance, though training on larger graphs can slightly improve result stability (reduced variance). Therefore, in practical deployment, one need not be overly sensitive to graph size.}
+
+
+{\color{blue}Our main experiments used 10 layers, where the model achieved optimal performance at moderate depth, significantly outperforming both extremely shallow and excessively deep configurations. This phenomenon can be explained as follows: shallower networks have limited expressive power and fail to capture sufficient high-order structural information; overly deep networks may suffer from overfitting or excessive smoothing, causing representations to lose discriminative information.
+
+Our main experiments used 8 attention heads. Increasing the number of heads from 1 to 8 did not cause significant fluctuations; 8 heads performed slightly better than other configurations. This indicates that GIA is relatively insensitive to the number of heads. Moderately increasing the number of heads helps capture diverse substructure information, but the gains diminish progressively. If computational resources permit, using more heads (e.g., 48) can be considered.
+
+Our main experiments used a learning rate of \(0.005\). Excessively high learning rates caused abrupt performance drops, indicating unstable training or non-convergence. Learning rates should be set conservatively, as overly large steps disrupt stable module training.
+
+Our main experiments used a perturbation strength \(s=5\). Performance peaks at moderate EPM perturbation intensity, indicating that moderate perturbations enhance the model's ability to suppress volatile features and improve generalization. However, too-small perturbations fail to fully leverage the regularization effect, while excessively large perturbations degrade signals and lead to performance decline.
+
+Our main experiments used a weight of the EPM loss \(\lambda=1\). As the proportion of EPM's influence increases, GIA's effectiveness shows an improving trend. However, when further increased, the effect does not continue to improve. Overall, GIA is relatively robust to $\lambda$.
+
+
+
+
+Our main experiments used an adversarial-mask regularization weight \(\tau=0.1\). Smaller \(\tau\) values yielded optimal performance, which degraded as \(\tau\) increased. IFC is a fine-grained adversarial regularizer; overly strong IFC can disrupt useful structural signals.
+
+In the noise-level sensitivity experiments, we analyzed Gaussian noise applied to node features and structural (edge) noise applied to the graph. As shown in Fig.~\ref{fig:7}, GIA exhibits strong robustness to node-feature perturbations with minimal performance fluctuation. However, GIA's performance degrades significantly when structural perturbations intensify. This indicates that GIA maintains robust performance as long as the underlying structural integrity remains largely intact.}
+
+
+%To verify the inherent perturbation-suppression ability of GTs, we design a weight visualization experiment. Specifically, we construct a small example graph (a 6-node ring or grid), and introduce a noise perturbation to node 0. We then visualize the node-to-node attention or aggregation weight matrices, unfolded from the same layer of a standard GCN\cite{kipf2017semi} and GT Layer\cite{dwivedi2021generalization}, respectively, using heatmaps.
+
+
+%We observe that the aggregation weights in GCN\cite{kipf2017semi} remain constant due to its fixed adjacency-based mechanism. In contrast, the attention weights in GT Layer\cite{dwivedi2021generalization} show a noticeable weakening in the row and column corresponding to the perturbed node (indicated by lighter grayscale in the heatmap).The result suggests  GTs naturally downweights noisy nodes.
+
+
+ 
+
+%According to the above experimental results , our method can not only automatically screen out the most discriminative invariant features, but also maintain a highly consistent attention pattern on the OOD graph data, which provides a strong support for OOD generalization.
+\subsection{Performance Analysis (RQ4)}
+{\color{blue}In this subsection, we report the training time, inference cost, complexity, and statistical significance of our model.
+
+We report the training time and inference cost of GIA and DIR on the SPMotif-0.9 dataset (see Table~\ref{tbl8}). Under identical settings, GIA's training time per epoch is approximately \(2.7\times\) that of DIR. We also computed their computational complexity. GIA performs multiple backward passes during adversarial training, resulting in time and complexity that are roughly \(2\text{--}3\times\) higher than traditional methods. GIA's inference cost is lower than DIR's, indicating that traditional GNN-based graph-invariance learning creates additional temporary tensors when constructing environments, leading to higher average memory peaks and lower throughput. We conducted experiments under ten independent random seeds to evaluate statistical significance, with experiments performed on three datasets: SPMotif-0.9, Graph-Twitter \cite{dong2014adaptive}, and BACE \cite{hu2020open}. Across all three datasets, GIA achieves significant improvements on SPMotif and BACE, while showing a smaller gain on Graph-Twitter. Results are reported as mean \(\pm\) 95\% confidence interval (t-distribution and bootstrap), supplemented by one-sample / Welch tests and Cohen's \(d\) to quantify statistical significance and practical effect size.
+
+On the SPMotif-0.9 dataset, GIA achieved an average test accuracy of \(92.33\%\). The 95\% t-confidence interval for the sample mean is \([89.82\%,\,94.84\%]\), while the bootstrap 95\% confidence interval is \([90.08\%,\,94.25\%]\). All baselines lie outside our confidence interval. A one-sample t-test against the best baseline IGM (\(H_1:\ \mu>\) baseline) yielded \(t=14.64\), with a one-tailed \(p\)-value of \(6.98\times10^{-8}\). A Welch two-sample t-test yielded \(t\approx 3.94\) (df \(\approx 4.64\)), with a one-tailed \(p\approx 0.0063\). The effect size, Cohen's \(d\), was approximately \(4.63\), indicating a large effect.
+
+
+On the Graph-Twitter \cite{dong2014adaptive} dataset, GIA achieved an average test accuracy of \(66.34\%\) with a sample standard deviation of \(0.63\%\). The 95\% t-confidence interval for the sample mean is \([65.89\%,\,66.80\%]\), and the bootstrap (percentile) 95\% CI is \([65.95\%,\,66.69\%]\). IGM results fall within our confidence interval. Correspondingly, a one-sample t-test on the baseline mean yields a one-tailed \(p\approx 0.295\), while Welch's two-sample t-test yields a one-tailed \(p\approx 0.443\) — both failing to reach statistical significance at \(\alpha=0.05\). The effect size Cohen's \(d\approx 0.18\) indicates a small effect.
+
+On the BACE \cite{hu2020open} dataset, GIA achieved an average accuracy of \(83.41\%\). The 95\% confidence interval based on the t-distribution is \([82.93\%,\,83.90\%]\), while the nonparametric bootstrap 95\% confidence interval is \([82.98\%,\,83.79\%]\). The accuracy of the best baseline model IGM falls below the lower bounds of both confidence intervals, indicating a statistically significant improvement under the CI criterion. A one-sample t-test (compared to the baseline mean) yields \(t=3.57\), \(p=0.003\) (one-tailed), with a large effect size (Cohen's \(d\approx 1.13\)).}
+
+\begin{table}%[]
+\caption{{\color{blue}Performance Analysis of Our Approach Compared to Graph-Invariant Learning Frameworks for GNNs}}
+\label{tbl8}
+\begin{tabular*}{\tblwidth}{@{}LCCC@{}}
+\toprule
+\textbf{Method} & \textbf{training time} & \textbf{peak memory} & \textbf{complexity} \\
+\midrule
+GIA  &86.55 s  &1203 MB  &O(N × n²)  \\
+DIR     &33.66 s  &1589 MB  &O(N × n log n)  \\
+
+\bottomrule
+\end{tabular*}
+\end{table}
+
+
+
+
+
+
+
+\subsection{Case studies and failure cases (RQ5)}
+{\color{blue}In this subsection, we conduct case studies at both node and graph levels and present failure cases. We analyze examples from the SPMotif-0.9 and Graph-Twitter datasets \cite{dong2014adaptive}.
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{heat.pdf}
+    \caption{Shows the heat map of the 0th attention head in five different plots of SPMotif-0.9, where the plot converges more towards green for more robust features, and more towards yellow for more susceptible to environmental influences, and it can be seen that we basically capture the same invariant features in all the four different plots.}
+    
+    \label{fig:8}
+\end{figure*}
+\FloatBarrier
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{20.pdf}
+    \includegraphics[width=1\linewidth]{250.pdf}
+    
+    \caption{{\color{blue}Attention Heatmap Distribution Before and After Training for Graph-Twitter's Second Graph}}
+    
+    \label{fig:9}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{66300.pdf}
+    \includegraphics[width=1\linewidth]{663050.pdf}
+    \caption{{\color{blue}Attention Heatmap Distribution Before and After Training for Graph-Twitter's 6630th Graph}}
+    
+    \label{fig:10}
+\end{figure}
+\FloatBarrier
+
+On SPMotif-0.9, we selected several representative subgraphs from the converged model and plotted the attention weights between node pairs for attention head~0 as heatmaps (see Fig.~\ref{fig:8}). Regardless of changes in the graph's global structure, node-degree distribution, or noisy features, GIA consistently focuses on the same set of key node pairs. These node pairs correspond precisely to the annotated regions in SPMotif, indicating that the model does not merely follow local cues but genuinely identifies invariant patterns that are strongly correlated with the prediction target and independent of the environment. For example, in Fig.~\ref{fig:8} structurally similar subgraphs under different distributions are highlighted in green, and edges with attention weights above 0.8 are nearly identical across variants—clearly demonstrating GIA's robustness to environmental perturbations.
+
+On the Graph-Twitter\cite{dong2014adaptive} dataset, we examined attention patterns before and after training and analyzed failure cases, as shown in Fig.~\ref{fig:9}. Before training, attention distributions tend to be diffuse and close to averaging across neighbors; after training, attention concentrates on local invariant substructures, demonstrating that our attention mechanism successfully discovers and emphasizes invariant features. However, we observe a failure case on image \#6630(see Fig.~\ref{fig:10}): despite this sample belonging to the same category as image \#2, the attention map for image \#6630 does not correctly focus on the expected invariant regions.}
+
+
+\section{Application Analysis and Limitations}
+{\color{blue}
+This paper proposes a graph-invariant learning framework for GTs that directly performs structural perturbations in the attention space while enforcing consistency. The method reduces the model's reliance on structural pseudo-correlations across multiple synthetic and real benchmarks. However, several limitations should be noted explicitly. In this section, we guide the practical application of GIA and analyze its limitations within medical knowledge graphs.
+
+When applying GIA for cross-hospital/cross-period clinical rule inference, EPM+IFC enhances the model's robustness toward structured medical subgraphs. Combined with attention visualization, it facilitates clinical auditing. In molecular/drug design, GIA addresses scaffold or substructure shift issues by simulating scaffold replacement through attention-level perturbations, thereby improving LLM/GT generalization on novel scaffolds. In recommendation/social and anti-fraud systems, GIA can detect and mitigate shortcut strategies based on short-term structural anomalies caused by user behavior drift or malicious manipulation.In practical applications, we can lower deployment barriers and adopt a lightweight operational mode to reduce computational overhead.
+
+\paragraph{Scale sensitivity.} In Experiment 4.2, GIA shows degraded performance when graph sizes shift; the ablation analysis in Section 4.3 indicates that the IFC module is a primary contributor to this degradation under scale-distribution variations. Future work should explore localized interventions (e.g., subgraph-level attention masking or scale-aware mask generation) to reduce dependence on global size statistics.
+
+\paragraph{Robustness to structural noise.} In the sensitivity experiments of Section 4.4, we observe that GIA is less robust to edge-level noise: performance drops substantially when edges are randomly added or removed in test graphs. This suggests a need for methods that remain reliable even when putative invariant features are partially compromised, for example by combining structural denoising, robustness-aware augmentation, or uncertainty-aware attention mechanisms.
+
+\paragraph{Computational and scalability constraints.} As shown in Section 4.5, GIA incurs higher computational cost and complexity (due to multiple adversarial passes and mask-search procedures). Further optimization—e.g., more efficient mask-search algorithms, cheaper relaxations for discrete sampling, or sparse attention implementations—is necessary for large-scale deployment.
+
+\paragraph{Directions for improvement.} The observed limitations reveal remaining robustness gaps and motivate several concrete directions: (i) improving mask-generation under difficult or low-signal conditions; (ii) strengthening regularization against spurious patterns while preserving useful structural cues; and (iii) incorporating additional structural or positional priors (e.g., subgraph encodings or multi-scale positional embeddings) to help the model more consistently locate invariant substructures.
+
+
+
+Addressing these issues will be the focus of future work to make GIA more robust, efficient, and broadly applicable in real-world OOD settings.
+}
+
+\section{Related Work}
+
+\begin{table*}%[]
+\caption{{\color{blue}Comparison of GIA with existing graph invariant learning frameworks}}
+\label{tbl9}
+\begin{tabular*}{\tblwidth}{@{}LCCCCCC@{}}
+\toprule
+\textbf{Method} & \textbf{Perturbation space} & \textbf{Augmentation learnable?}  & \textbf{Brief}  \\
+\midrule
+ERM          & None & No  &Standard baseline   \\
+G-Mixup        &Input   &No    & Graph-level mixup augmentation  \\
+IGM & Subgraph &Yes    &Invariant-learning method for GNNs   \\
+CICG            &Subgraph  &Yes   & Invariant-learning method for GNNs  \\
+DIR          & Subgraph &Yes    &Invariant-learning method for GNNs   \\
+CSAT           &Structural representations    &Yes&Integrates structural for GNNs  \\
+
+Ours           &Attention-logits  &Yes    &Invariant-learning method for GTs   \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+\subsection{OOD generalization of graph domains}
+The out-of-distribution (OOD) setting \cite{yang2024generalized} is the primary scenario in our research. Early OOD-generalization studies drew inspiration from domain adaptation and domain generalization, aiming to learn robust supervised models. For instance, Du et al. \cite{DU2025113316} theoretically analyzed how source–target domain distribution differences impact generalization; Sun et al.\ proposed Test-Time Training \cite{sun2020test}, which adapts models to new distributions by introducing self-supervised tasks for real-time fine-tuning on test samples. In recent years, methods based on causal-inference assumptions—such as Invariant Risk Minimization (IRM) \cite{DBLP:journals/corr/abs-1907-02893}—have been proposed to learn invariant input–output associations across domains, thereby capturing causal features and improving OOD generalization.
+
+{\color{blue}The issue of graph OOD has also attracted attention. Han et al.\cite{han2022g,verma2019manifold} employed data-augmentation techniques to improve OOD generalization. Feng et al.\cite{feng2019graph} used adversarial learning to suppress amplification in the message-passing mechanism. Building on these ideas, Wu et al.\cite{wu2022handling} proposed graph-invariant learning, extending the principle of perturbation consistency to graphs. Liu et al.\cite{liu2023flood} further strengthened the robustness of invariant features through supervised strategies. DIR \cite{wu2022discovering} defines environments within a dataset and minimizes the loss with the largest variance across environments. Nevertheless, graph-invariant learning still faces challenges such as ambiguous invariant-feature identification and insufficient diversity in generated environments. To address these issues, Zhang et al.\cite{ZHANG2024111620} identify small invariant features from the input graph for targeted learning, and Jia et al.\cite{jia2024graph} decouple invariant and variable features based on prior knowledge to construct richer hybridized environments, achieving improved results. A comparison of our method with existing approaches is provided in Table~\ref{tbl9}. Prior methods were designed mainly for GNNs and still relied on message passing, we turned our attention to the Graph Transformers.}
+
+
+
+\subsection{Graph Transformers}
+
+
+
+
+{\color{blue}To reduce dependence on message passing in existing graph-invariant learning frameworks, we design a graph-invariant learning framework for Graph Transformers (GTs).} Yun et al.\cite{yun2019graph} introduced the Transformer architecture \cite{vaswani2017attention} to graph-structured data. Unlike traditional GNNs that aggregate local neighborhoods, GTs leverage multi-head self-attention to capture dependencies between nodes at arbitrary distances \cite{ZHUANG2025112874,WU2025114031}, thus modeling both short-range and long-range interactions. Recent advances to improve GT modeling include subgraph-based attention mechanisms \cite{dwivedi2021generalization} and spectral-domain attention \cite{kreuzer2021rethinking}. However, GTs face challenges such as high computational complexity and a lack of local structural induction biases. Subsequent work has optimized these models by combining message passing with attention mechanisms \cite{rampavsek2022recipe} or designing sparse attention patterns \cite{shirzad2023exphormer}. Recent studies show GTs outperform traditional GNNs on tasks like molecular property prediction \cite{rampavsek2022recipe} and social-network modeling \cite{10.1145/3534678.3539296}. Nevertheless, GT performance in OOD scenarios remains under-explored.
+
+
+
+\subsection{Adversarial Training}
+We use adversarial training \cite{shafahi2019adversarial} in the IFC module to assist GTs capture robust invariant features in graph data. Adversarial training actively introduces adversarial perturbations or generates adversarial examples designed to improve a model's robustness to input noise, distributional biases, and malicious attacks \cite{DBLP:journals/corr/GoodfellowSS14}. Unlike traditional training strategies that only optimize the loss on natural samples, the core of adversarial training is to construct ‘‘worst-case’’ perturbations and force the model to maintain predictive consistency under such perturbations. Classical methods for generating adversarial examples include gradient-based techniques such as the Fast Gradient Sign Method (FGSM).
+
+Recently, attacks on graph data have received widespread attention: researchers have explored joint perturbations of graph structure (e.g., edge additions and deletions) and node features \cite{DBLP:conf/ijcai/ZugnerAG19}, while projected gradient methods \cite{deng2020universal} optimize perturbation strength via multi-step iteration. Consequently, adversarial-training methods for graphs have emerged. For example, GraphAT \cite{feng2019graph} introduces adversarial training into GNNs by applying constrained perturbations to node features to minimize the difference between adversarial and original losses. However, graph adversarial training has been rarely used in graph-invariant learning research.
+
+
+\section{Conclusion}
+
+%In this paper, we propose GIA, a novel lightweight mask-based module that used to introduce GTs into graph invariant learning. Specifically, we design EPM and IFC that operate in the attention space to facilitate invariant learning. We integrate GIA with various GTs architectures, demonstrating its plug-and-play nature and its effectiveness in improving OOD generalization. Overall, GIA provides a flexible and effective framework for building invariant graph learning models with GTs backbones. As a framework that can be plugged into GTs, GIA has achieved results far surpassing those of state-of-the-art methods in a variety of OOD scenarios. At the same time, we have verified that EPM, IFC, and GTs are all necessary in OOD scenarios. In future work, we plan to further investigate the potential of GIA under size-distribution shift.
+{\color{blue}In this paper, we propose GIA, a graph-invariant learning framework tailored for Graph Transformers (GTs). Specifically, we design the Environment Perturbation Module (EPM) and the Invariant Feature Capture Module (IFC) to operate within the attention space, directly 
+coupling GTs to facilitate invariant learning. Concurrently, we explore the practical implications of GIA: it can be directly deployed in transformer-based graph learning systems to enhance robustness across applications such as medical knowledge graphs, molecular design, and social or 
+recommendation systems. Engineering considerations include computational efficiency and deployment cost. Future work will focus on improving the module's performance across varying graph sizes and on exploring further opportunities for reducing computational cost.}
+
+
+
+
+
+\section{Acknowledgements}
+This work is partly supported by the National Natural Science Foundation of China under grants 62306100, and the Natural Science Research Project of Anhui Educational Committee under grant 2024AH040209 and 2023AH052180.
+% Numbered list
+% Use the style of numbering in square brackets.
+% If nothing is used, default style will be taken.
+%\begin{enumerate}[a)]
+%\item 
+%\item 
+%\item 
+%\end{enumerate}  
+
+% Unnumbered list
+%\begin{itemize}
+%\item 
+%\item 
+%\item 
+%\end{itemize}  
+
+% Description list
+%\begin{description}
+%\item[]
+%\item[] 
+%\item[] 
+%\end{description}  
+
+% Figure
+% \begin{figure}[<options>]
+% 	\centering
+% 		\includegraphics[<options>]{}
+% 	  \caption{}\label{fig1}
+% \end{figure}
+
+
+% \begin{table}[<options>]
+% \caption{}\label{tbl1}
+% \begin{tabular*}{\tblwidth}{@{}LL@{}}
+% \toprule
+%   &  \\ % Table header row
+% \midrule
+%  & \\
+%  & \\
+%  & \\
+%  & \\
+% \bottomrule
+% \end{tabular*}
+% \end{table}
+
+% Uncomment and use as the case may be
+%\begin{theorem} 
+%\end{theorem}
+
+% Uncomment and use as the case may be
+%\begin{lemma} 
+%\end{lemma}
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+
+
+% To print the credit authorship contribution details
+% \printcredits
+
+%% Loading bibliography style file
+%\bibliographystyle{model1-num-names}
+\bibliographystyle{unsrt}
+
+% Loading bibliography database
+\bibliography{cas-refs}
+
+% Biography
+% \bio{}
+% % Here goes the biography details.
+% \endbio
+
+% \bio{pic1}
+% % Here goes the biography details.
+% \endbio
+
+\end{document}
+
